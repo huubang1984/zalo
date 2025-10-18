@@ -1,0 +1,15 @@
+{
+  "name": "zalo-hr-chatbot",
+  "build": {
+    "builder": "Dockerfile"
+  },
+  "deploy": {
+    "restart": true
+  },
+  "env": {
+    "MONGODB_URI": {"from": "MONGODB_URI"},
+    "ZALO_VERIFY_TOKEN": {"from": "ZALO_VERIFY_TOKEN"},
+    "ZALO_OA_ACCESS_TOKEN": {"from": "ZALO_OA_ACCESS_TOKEN"},
+    "USE_HRMS_MOCK": "true"
+  }
+}

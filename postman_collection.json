@@ -1,0 +1,112 @@
+{
+  "info": {
+    "name": "Zalo HR Chatbot Full - Postman",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Verify webhook",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/webhook?verify_token=change_me_verify_token&challenge=abc123"
+        }
+      }
+    },
+    {
+      "name": "Send menu message",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \"event_name\":\"user_send_text\",\\n  \"sender\":{ \"id\":\"user_test\" },\\n  \"message\":{ \"text\":\"menu\" }\\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/webhook"
+        }
+      }
+    },
+    {
+      "name": "Start leave flow (choose type)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \"event_name\":\"user_send_text\",\\n  \"sender\":{ \"id\":\"user_test\" },\\n  \"message\":{ \"text\":\"\u0111\u0103ng k\u00fd ngh\u1ec9 ph\u00e9p\" }\\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/webhook"
+        }
+      }
+    },
+    {
+      "name": "Provide start date",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \"event_name\":\"user_send_text\",\\n  \"sender\":{ \"id\":\"user_test\" },\\n  \"message\":{ \"text\":\"2025-10-20\" }\\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/webhook"
+        }
+      }
+    },
+    {
+      "name": "Provide end date",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \"event_name\":\"user_send_text\",\\n  \"sender\":{ \"id\":\"user_test\" },\\n  \"message\":{ \"text\":\"2025-10-21\" }\\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/webhook"
+        }
+      }
+    },
+    {
+      "name": "Provide reason and confirm",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \"event_name\":\"user_send_text\",\\n  \"sender\":{ \"id\":\"user_test\" },\\n  \"message\":{ \"text\":\"Gia \u0111\u00ecnh \u0111i du l\u1ecbch\" }\\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/webhook"
+        }
+      }
+    }
+  ]
+}

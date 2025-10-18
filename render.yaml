@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: zalo-hr-chatbot
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    envVars:
+      - key: MONGODB_URI
+        value: $MONGODB_URI
+      - key: ZALO_VERIFY_TOKEN
+        value: $ZALO_VERIFY_TOKEN
+      - key: ZALO_OA_ACCESS_TOKEN
+        value: $ZALO_OA_ACCESS_TOKEN
+      - key: USE_HRMS_MOCK
+        value: "true"

@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    container_name: zalo_hr_chatbot
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+      - ./:/usr/src/app
+    command: node src/index.js
+    depends_on:
+      - mongo
+
+  worker:
+    build: .
+    container_name: zalo_hr_worker
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./:/usr/src_app
+    command: node src/jobs/jobWorker.js
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6
+    container_name: zalo_hr_mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
